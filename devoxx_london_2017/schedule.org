@@ -7,7 +7,6 @@
 **** 645 proposals; there was an effort to work with new speakers to better prepare them so the proposals were accepted here and other conferences.
 **** "Have nothing in your house that you do not know to be useful, or believe to be beautiful" - William Morris
 **** Mind the Geek - this can be implemented now... or in a year! the point is to be inspired to change and be better. We're lucky to be in a fied that allows creativity
-**** bit.ly/personal_devoxx - personal devoxx report
 **** They have their own beer! :tada:
 **** Constructing a practical quantum computer
 ***** NIST Quantum algorithm zoo
@@ -157,22 +156,142 @@
 *** A Pragmatist’s Guide to Functional Geekery
 *** Room B
 *** Notes
-**** Insert Here
+**** https://github.com/miciek/galactic-twitter
+**** Java vs Scala
+***** Java8 still handles mutable collections, needs Guava and Lombok
+***** Scala has all of it
+***** Kotlin also has all of it and it's similar
+***** Vavr adds this to Java8 but no immutable types
+**** Futures favour the idea of Maybe (similar to Scala Success, Failure)
+**** Future.get is blocking
+**** We should compose (do it inside of the context and not unwrap it)
+**** In Scala we would use for-comprehension
+**** Future.foreach doesn't block but only for success calls, no failure handling
+**** Collections behave like immutables in Scala and get returns Options
+**** We need proper return types and avoid bad defaults (e.g. None vs '0').
+**** We need to use proper types to represent Success and Failure
+**** Use types to model our assumptions!
+**** Complex return types could be represented with Algebraic Data Type
+***** Product - A Pojo
+***** Sum - Can be multiple things but they are unique
+***** Scala sealed traits would be Sum's
+***** Scala final case class would be the Product
+**** Pattern match can be used to run validations
+**** Manipulations can be done with high-order functions and types that represent said manipulations and those can be applied
+**** Type class pattern can be used to associate a return type with a internal type during compilation time (e.g. Class to JSON response) decoupling
 ** 14h50-15h40
 *** Cloud Native with Kubernetes
 *** Room D
 *** Notes
-**** Insert Here
+**** developers.redhat.com
+**** Jess Humble test - Book of CD
+**** Typical software development has a lot of people pushing some BLOB up and down with slow development with low alignment
+**** We want everyone aligned and pushing applications in the same directions
+**** Microservices need to comply to a lot of properties
+**** They replaced Logstash with FluentD (EFK stack) for logging
+**** Occullar and Prometheus for monitoring
+**** Containers makes it easy to set our stack programmatically and sharable
+***** Wiki pages and emails was the old way... cof cof
+**** Kubernetes means Helmsman, the pilot of the ship
+**** Kubernetes
+***** POD - 1 Container; Shared IP; Shared Storage; Shared Resources; Shared Lifecicle
+***** Repplication Controller/ Deployment: Ensures that a specific pod replicas are running at any one time
+***** Services: Grouping of pods (acting as one) has a stable virtual IP and a DNS name
+***** Labels: Key/Valye pairs with associated kubernetes objects
+***** Probes: Check the state of applications running on POD's. Setup is made in yaml files
+**** Pod it's a family of whales (oh the puns...)
+**** Could we use labels to kill and prioritize work?
+**** Fabric8 - Toolkit that helps a lot with kubernetes development by creating the required kubernetes and docker files
+**** https://github.com/burrsutter/kube4docker
+**** Blue/Green is all or nothing, Canary releases is the solution
+***** Earlysend a fraction the requests to canary and grow it slowly
+***** Even a simple increase and reduction of pods is better than normal blue green
+***** Canary in kubernetes usually deploys with 0 replicas to start
+**** What about stateless?
+***** In the demo, spring sessions was used to share the state
+***** Rolling updates help with that and relies on the readiness probe
+***** initial delay helps to warm up stuff
+***** http://infinispan.org/
+**** 'mvn clean fabric8:deploy' it's awesome!
+**** Sidecars separates a lot of logic out of the code so we should check it
+**** https://cdn.rawgit.com/redhat-helloworld-msa/helloworld-msa/master/readme.html
+**** https://github.com/burrsutter/devoxxUK17_kubernetes
+**** https://github.com/johanhaleby/kubetail
 ** 16h10-17h00
 *** Automating resilience testing with Docker and Property Based testing
 *** Room C
 *** Notes
-**** Insert Here
+**** Resilience Tests
+***** Ability to recover from or adjust to misfortune or change
+***** Applications need to adjust to bad components (e.g. Gracefully degrade a bad component)
+***** Applications need to recover, they should go back to full capacity and functionality
+***** Release It! - Test Harness was difficult
+****** It requires devops requests that are bad!
+***** Isolation - Staging has no isolation
+***** Execution - "Steps to achieve" means it's manual... it sucks
+***** Rollback in wiki pages... see the point above
+***** Coverage - Only a small amount of systems are truly changed for this tests
+***** Cost - Everyone needs to be present to check what should be tested
+***** Frequency - Once... too costly
+***** We need automated tests that are completely isolated with full covarage withouth human interaction and frequent!
+**** Tools
+***** Docker-compose
+****** Start the full environment
+***** IG Havoc
+****** Emulates failures with Docker power
+****** https://github.com/IG-Group/Havoc
+***** Fake server records the messages and it's used to emulate failure from outside sources
+**** Docker-compose needs priveleged mode as true to inject failures
+**** Clojure can be used to control the tests programmatically :tada:
+**** Property Based Testing
+***** Example Based Testing it's biased
+***** Property Based Testing you give what type of inout the function expects and give a property to be tested a N amount of times
+***** It also uses seeds
+***** How to specify properties?
+****** On an event driven where we want a message that is delivered only once and doesn't override old information
+******* The tool actually creates an input plan based on several properties
+******* We need to specify the healthy states
+******* To run the test you give the plan with this generation with all the things that break and how to be healthy
+******* We can set our expectations based on the received messages (e.g. received 20000 and received unique 2000)
+******* Dangling state is tricky to test
+******* Startup dependency it's also tricky
+******* Healthy states are crucial! You might find that you don't have a lot of healthy states...
+******** This can be used as a metric! :thinking:
+**** Drawbacks
+***** They take a LOT of time...
+***** Shriking is useless
+***** Non-deterministic
+***** Infnite number of tests...
+***** No proof
+**** Simple testing can prevent most critical failures - Ding Yuan
+**** Docker is your friend!
+**** Don't write tests
+***** Let the machine do testing for you!
+**** Chaos Monkey is a good tool in AWS but needs isolation
+**** They don't do it in CI cycle but they don't have everything in Docker
 ** 17h15-18h05
 *** Agile is NOT a process!
 *** Room C
 *** Notes
-**** Insert Here
+**** Agile is slapped everywhere!
+**** The Agile Boundary
+***** What - oppurtinity / feature request
+***** How - developer side, shouldn't be interefered by product (within reason)
+***** Communication - the barrier!
+**** Shared Vision is the goal
+**** Spring practices usually aren't understood
+**** Agile requires change, change isn't easy
+***** Problems along the path make it really difficult to change!
+**** Internal projects are as important as external stakeholders! Usually this isn't recognized but brings a lot of issues long term
+**** Mix Cadences in every team which makes it really difficult to make predictions
+**** Manegerless Environment from Valve works for them but lack of structure makes the presenter feel doubt that a diverse team is possible
+**** Anarchy != Agile, roles exist even within Agile, removing them prooved costly. Agile just tries to have some lightweight practices that avoid messing with engineering
+**** Breaking Down Agile
+**** Ward Cunningham coined the term Technical Debt and there's a good youtube video regarding this (need to search for it)
+**** But to sum it up... people don't fully understand the Agile Manifesto and there are a lot of misconceptions
+**** https://geert-hofstede.com/organisational-culture.html
+**** Agile is a culture, not a methodology or process
+**** Agile is suggested rathar than living culture. It's a template
 * Second Day
 ** 09h00-09h50
 *** I have a NoSQL toaster
