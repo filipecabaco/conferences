@@ -1,0 +1,211 @@
+* First Day
+** 09h00-10h45
+*** Keynote
+*** Galery Hall
+*** Notes
+**** 5th Devoxx and biggest; 1100+ attendees; 36 countries;
+**** 645 proposals; there was an effort to work with new speakers to better prepare them so the proposals were accepted here and other conferences.
+**** "Have nothing in your house that you do not know to be useful, or believe to be beautiful" - William Morris
+**** Mind the Geek - this can be implemented now... or in a year! the point is to be inspired to change and be better. We're lucky to be in a fied that allows creativity
+**** bit.ly/personal_devoxx - personal devoxx report
+**** They have their own beer! :tada:
+**** Constructing a practical quantum computer
+***** NIST Quantum algorithm zoo
+***** :mindblown: stuff that focused on physics and how to build a large scale computer using microwaves instead of lasers
+**** Video Games: The Quest for smart dumbness
+***** AI is dumb because they don't need it in games, perfect would be unbeatable
+***** Smartness dumbness paradox: it goes from perfect to dumb by breaking it until beatable
+***** Behaviour Tree: the right stimulation creates unexpected results
+***** Quake 3 - AI learned that the best way to win a war is not to participate in it
+**** Ask the Architect
+****** Voted against modular Java, what's next?
+******* A revised draft to actually vote again for Modular more inline with licensing issues. There's no need for consensus.
+****** Benefits of Jigsaw?
+******* Everybody can escape classpath hell
+******* Libs can hide internal API's
+******* Modularize the platform
+******* Down payment to evolve the Java SE platform
+****** Top 10 misconceptions
+******* Maven doesn't work on Java9
+******* Libs don't work on Java9
+******* I'll have to modularize all the things to make it work
+******* Existing module systems don't work Java9
+******* Jigsaw will separate the community like Python3
+******* Strong encapsulation it's the only roadblock to Java9
+******* sun.misc.Unsafe will disappear and that will break a lot of things
+******* Solve multiple versions problem
+******* Sucks because it won't solve the multiple versions problem
+******* Modularize is easy! ...
+****** What is after Java 9?
+******* Valhala will improve memory consumption;
+******   Java10?
+******* The way features are handled will change and shipping needs to be quicker
+****** Favorite JVM language?
+******* Clojure :troll:
+****** Area underexplored?
+******* Does it mather? Pick what you are passionate about
+****** Java Errors?
+******* Java native serialization
+******* No early module system
+******* final fields are not final!
+****** Your biggest mistake?
+******* Stopped played music. Software is not everything
+****** Next steps?
+******* Retire!
+** 10h50-11h40
+*** Reactive Spring
+*** Auditorium
+*** Notes
+**** A lot of stuff specific to one thing: Spring 5 Reactive Programming
+**** https://github.com/joshlong/flux-flix-service
+**** Microservices you'll hit non functional requirements; Data segregation when visibility is required and becomes expansive since it rellies on socket communication that is kept alive. Reactive program hels with this since and reclaims the idea of streams back to application levels (non blocking)
+**** Events is the core model (Reactive Stream Initiative);
+***** Publisher
+*****  Subscribers
+***** Subscription
+***** Processor (Publisher and Subscriber)
+**** How can I work with streams? We're missing them in the Reactive Stream Initiative. The operators work with the core elements to give us a toolkit to work upon events
+**** No illusions about what cannot be reactive and you won't see Reactive SQL, Thread Pool but they have Reactive Cassandra/Mongo connectors
+**** Spring boot used (as usual) start.spring.io
+**** Publishers
+***** Flux:  0 or n values
+***** Mono: 0 or 1 values
+**** Lombok - search later but generates in compile time Getters, Setters, Constructors, etc... Kotlin cof cof
+**** If you want to lose your data reactively, use MongoDB
+**** Repository is really standart but works with Reactor in mind
+**** Compose reactive types and they have a lazy behaviour.
+***** To execute the composition you need to subscribe to it!
+***** Subscription can be overridden to have null consumer and num consumer error and execute a simple lambda
+***** You can zip fluxes to compose them
+**** Services
+***** They are built around the Publishers
+**** API's
+***** SpringMVC already knows how to handle Mono's and Flux's and won't block sockets so we can support more with the same resources
+***** Usually REST goes a slurp approach
+***** 'produces' argument in annotation defines the type of output
+***** Messaging frames so the consumer can be aware when to consume
+***** ContentType Text_Event_Stream
+**** Functional Reactive Approach in API's
+***** It needs Jackson to be avoid because it awaits for all, it needs to understand that each part of the payload is JSON and parse it one by one
+**** Client
+***** 'client.exchange.subscribe(lambda magic)'
+***** You can transform the body directly into a Flux
+**** Everything needs to be reactive otherwise it doesn't make sense! If one element is blocking, then it will be bad...
+** 11h55-12h45
+*** User Stories Refactoring
+*** Room D
+*** Notes
+**** Multiple clients need compromises and requirements aren't easy because there's too many people are collecting and creating stories. The chain is too big!
+**** Context is king!
+**** Road Commitement
+***** Roadmap commitements
+***** Dates imply commitement on features
+***** Flexibility in features and requirements needs to exist
+**** Backlog
+***** Too many issues!
+***** Challange of no visibility and communication when the chain is too big
+***** They want everything captured but they might be outdated along the way
+**** User Stories
+***** Templated user stories are bad! Flexibility is required! Don't be blinded by too much process
+***** The user story needs to be well defined and requires a good persona definition
+***** Missing acceptance criteria matters!
+**** Meaningless Tasks
+***** Bring value to other people! The process is heavy so it should bring value!
+***** Adapt to your reality
+**** What is the root cause?
+***** Scary commitements! A long roadmap with no flexibility
+***** Big backlog, low visibility on priority
+***** Obselete tasks that don't bring value
+***** True issue starts even before we have user stories!
+**** The cures!
+***** Roadmap
+******* Product Tree
+******** Define a vision with multiple partners
+******** Branches can be cut and that shows dependencies between features
+******* Love <3 vs ROI $
+******** Put cards to organize what aligns more and has a balance between love and roi
+******** Apply common sense!
+******* Metrics
+******** Really highlevel on the "feeling' of that feature
+******** Find key features that bring hapiness to the business
+******** The 3 Key features
+******* Don't use numbers! infinity / 2 = infinity
+******* Mind maps to collect all this information
+***** Backlog
+****** What is optmal backlog size?
+******* We don't have good data or we have ever changing teams... Capacity, speed, etc isn't a good source of data!
+******* Multiteam efforts also suffer from this!
+******* 1 user story per 1 developer, if we have that story blocked have user stories on a reserve with proper planning (2 / 3 sprints ahead)
+******** Enables low number of managers
+******** Avoids shuflling of stories
+******** Flexibility to change
+***** User Stories
+****** Why?
+******* Usually we forget the why and the technical side and what that implies (e.g. perfomance impact, security, scalability, etc)
+******* We should ask those questions! Bullets that show an overview of the technical details required
+****** Who?
+******* Persona is not enough, write it with the readers in mind!
+******* Find a good format and discuss them
+******* Remove ambiguities, they need to be easy to understand and cross functional (aka don't disconnect the frontend from the backend)
+******* Story size isn't easy, communication is king and leakage should be acceptable
+****** What?
+******* Goes more for the technical side and bring up spikes, bug fixing, integrations, etc...
+******* Understand business reasons!
+****** Feedback loop
+******* Measuements usually are ignored, so it should be part of the code
+** 13h45-14h35
+*** A Pragmatist’s Guide to Functional Geekery
+*** Room B
+*** Notes
+**** Insert Here
+** 14h50-15h40
+*** Cloud Native with Kubernetes
+*** Room D
+*** Notes
+**** Insert Here
+** 16h10-17h00
+*** Automating resilience testing with Docker and Property Based testing
+*** Room C
+*** Notes
+**** Insert Here
+** 17h15-18h05
+*** Agile is NOT a process!
+*** Room C
+*** Notes
+**** Insert Here
+* Second Day
+** 09h00-09h50
+*** I have a NoSQL toaster
+*** Room B
+*** Notes
+**** Insert Here
+** 10h05-10h55
+*** JVM Toolbox 2017 - Choose the right JVM language for the right task (Live coding)
+*** Gallery Hall
+*** Notes
+**** Insert Here
+** 11h20-12h10
+*** Busy Developer's Guide to Building Languages
+*** Room A
+*** Notes
+**** Insert Here
+** 12h25-13h15
+*** Docker Swarm or Kubernetes or Mesos - pick your framework!
+*** Gallery Hall
+*** Notes
+**** Insert Here
+** 14h15-15h05
+*** Fostering an evolving architecture in the agile world
+*** Room D
+*** Notes
+**** Insert Here
+** 15h20-16h10
+*** The Art of Discovering Bounded Contexts
+*** Room A
+*** Notes
+**** Insert Here
+** 16h40-17h30
+*** Evolutionary Architecture
+*** Auditorium
+*** Notes
+**** Insert Here

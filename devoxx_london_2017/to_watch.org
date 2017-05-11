@@ -1,0 +1,20 @@
+* High Priority
+http://cfp.devoxx.co.uk/2017/talk/RJO-9656/The_end_of_polling_:_why_and_how_to_transform_a_REST_API_into_a_Data_Streaming_API%3F
+http://cfp.devoxx.co.uk/2017/talk/QFA-7776/The_Anatomy_of_Java_Vulnerabilities
+http://cfp.devoxx.co.uk/2017/talk/JXK-1425/Securing_microservices:_a_practical_guide
+http://cfp.devoxx.co.uk/2017/talk/TJL-7196/The_Diabolical_Developer's_Guide_to_Performance_Tuning
+http://cfp.devoxx.co.uk/2017/talk/WKG-8588/Using_the_JVM_as_a_platform_for_smart_contracts_&_cryptocurrency
+http://cfp.devoxx.co.uk/2017/talk/AJO-3766/Canaries_and_Kubernetes
+
+* Low Priority
+http://cfp.devoxx.co.uk/2017/talk/MXR-2678/Git_Workflow_Strategies_for_Technical_Debt_Management_
+http://cfp.devoxx.co.uk/2017/talk/HTY-2357/Modules_in_One_Lesson
+http://cfp.devoxx.co.uk/2017/talk/RUN-7398/Microservices_for_the_Masses_with_Spring_Boot,_JHipster,_and_JWT
+http://cfp.devoxx.co.uk/2017/talk/ZRZ-3795/Turbo_Charge_CPU_Utilization_in_Fork%2FJoin_Using_the_ManagedBlocker
+http://cfp.devoxx.co.uk/2017/talk/FCD-2280/The_Case_for_Kotlin_and_Ceylon
+http://cfp.devoxx.co.uk/2017/talk/RYT-7544/How_Modern_SQL_Databases_Come_up_with_Algorithms_that_You_Would_Have_Never_Dreamed_Of_(vJUG_Live_session)
+http://cfp.devoxx.co.uk/2017/talk/FSQ-8848/They_Do_It_With_Mirrors_%E2%80%93_Java_Process_Memory_in_Microservices_environment
+http://cfp.devoxx.co.uk/2017/talk/MSC-7893/Using_FlameGraphs_To_Illuminate_The_JVM
+http://cfp.devoxx.co.uk/2017/talk/OMW-8636/The_reactive_landscape
+http://cfp.devoxx.co.uk/2017/talk/ODY-0821/Transactional_actors_with_Eclipse_Vert.x
+http://cfp.devoxx.co.uk/2017/talk/AEG-7836/Defending_the_Human_Network
