@@ -1,0 +1,662 @@
+* Keynote
+** 5th Devoxx and biggest; 1100+ attendees; 36 countries;
+** 645 proposals; there was an effort to work with new speakers to better prepare them so the proposals were accepted here and other conferences.
+** "Have nothing in your house that you do not know to be useful, or believe to be beautiful" - William Morris
+** Mind the Geek - this can be implemented now... or in a year! the point is to be inspired to change and be better. We're lucky to be in a fied that allows creativity
+** They have their own beer! :tada:
+** Constructing a practical quantum computer
+*** NIST Quantum algorithm zoo
+*** :mindblown: stuff that focused on physics and how to build a large scale computer using microwaves instead of lasers
+** Video Games: The Quest for smart dumbness
+*** AI is dumb because they don't need it in games, perfect would be unbeatable
+*** Smartness dumbness paradox: it goes from perfect to dumb by breaking it until beatable
+*** Behaviour Tree: the right stimulation creates unexpected results
+*** Quake 3 - AI learned that the best way to win a war is not to participate in it
+** Ask the Architect
+**** Voted against modular Java, what's next?
+***** A revised draft to actually vote again for Modular more inline with licensing issues. There's no need for consensus.
+**** Benefits of Jigsaw?
+***** Everybody can escape classpath hell
+***** Libs can hide internal API's
+***** Modularize the platform
+***** Down payment to evolve the Java SE platform
+**** Top 10 misconceptions
+***** Maven doesn't work on Java9
+***** Libs don't work on Java9
+***** I'll have to modularize all the things to make it work
+***** Existing module systems don't work Java9
+***** Jigsaw will separate the community like Python3
+***** Strong encapsulation it's the only roadblock to Java9
+***** sun.misc.Unsafe will disappear and that will break a lot of things
+***** Solve multiple versions problem
+***** Sucks because it won't solve the multiple versions problem
+***** Modularize is easy! ...
+**** What is after Java 9?
+***** Valhala will improve memory consumption;
+****   Java10?
+***** The way features are handled will change and shipping needs to be quicker
+**** Favorite JVM language?
+***** Clojure :troll:
+**** Area underexplored?
+***** Does it mather? Pick what you are passionate about
+**** Java Errors?
+***** Java native serialization
+***** No early module system
+***** final fields are not final!
+**** Your biggest mistake?
+***** Stopped played music. Software is not everything
+**** Next steps?
+***** Retire!
+* Reactive Spring
+** A lot of stuff specific to one thing: Spring 5 Reactive Programming
+** https://github.com/joshlong/flux-flix-service
+** Microservices you'll hit non functional requirements; Data segregation when visibility is required and becomes expansive since it rellies on socket communication that is kept alive. Reactive program hels with this since and reclaims the idea of streams back to application levels (non blocking)
+** Events is the core model (Reactive Stream Initiative);
+*** Publisher
+***  Subscribers
+*** Subscription
+*** Processor (Publisher and Subscriber)
+** How can I work with streams? We're missing them in the Reactive Stream Initiative. The operators work with the core elements to give us a toolkit to work upon events
+** No illusions about what cannot be reactive and you won't see Reactive SQL, Thread Pool but they have Reactive Cassandra/Mongo connectors
+** Spring boot used (as usual) start.spring.io
+** Publishers
+*** Flux:  0 or n values
+*** Mono: 0 or 1 values
+** Lombok - search later but generates in compile time Getters, Setters, Constructors, etc... Kotlin cof cof
+** If you want to lose your data reactively, use MongoDB
+** Repository is really standart but works with Reactor in mind
+** Compose reactive types and they have a lazy behaviour.
+*** To execute the composition you need to subscribe to it!
+*** Subscription can be overridden to have null consumer and num consumer error and execute a simple lambda
+*** You can zip fluxes to compose them
+** Services
+*** They are built around the Publishers
+** API's
+*** SpringMVC already knows how to handle Mono's and Flux's and won't block sockets so we can support more with the same resources
+*** Usually REST goes a slurp approach
+*** 'produces' argument in annotation defines the type of output
+*** Messaging frames so the consumer can be aware when to consume
+*** ContentType Text_Event_Stream
+** Functional Reactive Approach in API's
+*** It needs Jackson to be avoid because it awaits for all, it needs to understand that each part of the payload is JSON and parse it one by one
+** Client
+*** 'client.exchange.subscribe(lambda magic)'
+*** You can transform the body directly into a Flux
+** Everything needs to be reactive otherwise it doesn't make sense! If one element is blocking, then it will be bad...
+* User Stories Refactoring
+** Multiple clients need compromises and requirements aren't easy because there's too many people are collecting and creating stories. The chain is too big!
+** Context is king!
+** Road Commitement
+*** Roadmap commitements
+*** Dates imply commitement on features
+*** Flexibility in features and requirements needs to exist
+** Backlog
+*** Too many issues!
+*** Challange of no visibility and communication when the chain is too big
+*** They want everything captured but they might be outdated along the way
+** User Stories
+*** Templated user stories are bad! Flexibility is required! Don't be blinded by too much process
+*** The user story needs to be well defined and requires a good persona definition
+*** Missing acceptance criteria matters!
+** Meaningless Tasks
+*** Bring value to other people! The process is heavy so it should bring value!
+*** Adapt to your reality
+** What is the root cause?
+*** Scary commitements! A long roadmap with no flexibility
+*** Big backlog, low visibility on priority
+*** Obselete tasks that don't bring value
+*** True issue starts even before we have user stories!
+** The cures!
+*** Roadmap
+***** Product Tree
+****** Define a vision with multiple partners
+****** Branches can be cut and that shows dependencies between features
+***** Love <3 vs ROI $
+****** Put cards to organize what aligns more and has a balance between love and roi
+****** Apply common sense!
+***** Metrics
+****** Really highlevel on the "feeling' of that feature
+****** Find key features that bring hapiness to the business
+****** The 3 Key features
+***** Don't use numbers! infinity / 2 = infinity
+***** Mind maps to collect all this information
+*** Backlog
+**** What is optmal backlog size?
+***** We don't have good data or we have ever changing teams... Capacity, speed, etc isn't a good source of data!
+***** Multiteam efforts also suffer from this!
+***** 1 user story per 1 developer, if we have that story blocked have user stories on a reserve with proper planning (2 / 3 sprints ahead)
+****** Enables low number of managers
+****** Avoids shuflling of stories
+****** Flexibility to change
+*** User Stories
+**** Why?
+***** Usually we forget the why and the technical side and what that implies (e.g. perfomance impact, security, scalability, etc)
+***** We should ask those questions! Bullets that show an overview of the technical details required
+**** Who?
+***** Persona is not enough, write it with the readers in mind!
+***** Find a good format and discuss them
+***** Remove ambiguities, they need to be easy to understand and cross functional (aka don't disconnect the frontend from the backend)
+***** Story size isn't easy, communication is king and leakage should be acceptable
+**** What?
+***** Goes more for the technical side and bring up spikes, bug fixing, integrations, etc...
+***** Understand business reasons!
+**** Feedback loop
+***** Measuements usually are ignored, so it should be part of the code
+* A Pragmatist’s Guide to Functional Geekery
+** https://github.com/miciek/galactic-twitter
+** Java vs Scala
+*** Java8 still handles mutable collections, needs Guava and Lombok
+*** Scala has all of it
+*** Kotlin also has all of it and it's similar
+*** Vavr adds this to Java8 but no immutable types
+** Futures favour the idea of Maybe (similar to Scala Success, Failure)
+** Future.get is blocking
+** We should compose (do it inside of the context and not unwrap it)
+** In Scala we would use for-comprehension
+** Future.foreach doesn't block but only for success calls, no failure handling
+** Collections behave like immutables in Scala and get returns Options
+** We need proper return types and avoid bad defaults (e.g. None vs '0').
+** We need to use proper types to represent Success and Failure
+** Use types to model our assumptions!
+** Complex return types could be represented with Algebraic Data Type
+*** Product - A Pojo
+*** Sum - Can be multiple things but they are unique
+*** Scala sealed traits would be Sum's
+*** Scala final case class would be the Product
+** Pattern match can be used to run validations
+** Manipulations can be done with high-order functions and types that represent said manipulations and those can be applied
+** Type class pattern can be used to associate a return type with a internal type during compilation time (e.g. Class to JSON response) decoupling
+* Cloud Native with Kubernetes
+** developers.redhat.com
+** Jess Humble test - Book of CD
+** Typical software development has a lot of people pushing some BLOB up and down with slow development with low alignment
+** We want everyone aligned and pushing applications in the same directions
+** Microservices need to comply to a lot of properties
+** They replaced Logstash with FluentD (EFK stack) for logging
+** Occullar and Prometheus for monitoring
+** Containers makes it easy to set our stack programmatically and sharable
+*** Wiki pages and emails was the old way... cof cof
+** Kubernetes means Helmsman, the pilot of the ship
+** Kubernetes
+*** POD - 1 Container; Shared IP; Shared Storage; Shared Resources; Shared Lifecicle
+*** Repplication Controller/ Deployment: Ensures that a specific pod replicas are running at any one time
+*** Services: Grouping of pods (acting as one) has a stable virtual IP and a DNS name
+*** Labels: Key/Valye pairs with associated kubernetes objects
+*** Probes: Check the state of applications running on POD's. Setup is made in yaml files
+** Pod it's a family of whales (oh the puns...)
+** Could we use labels to kill and prioritize work?
+** Fabric8 - Toolkit that helps a lot with kubernetes development by creating the required kubernetes and docker files
+** https://github.com/burrsutter/kube4docker
+** Blue/Green is all or nothing, Canary releases is the solution
+*** Earlysend a fraction the requests to canary and grow it slowly
+*** Even a simple increase and reduction of pods is better than normal blue green
+*** Canary in kubernetes usually deploys with 0 replicas to start
+** What about stateless?
+*** In the demo, spring sessions was used to share the state
+*** Rolling updates help with that and relies on the readiness probe
+*** initial delay helps to warm up stuff
+*** http://infinispan.org/
+** 'mvn clean fabric8:deploy' it's awesome!
+** Sidecars separates a lot of logic out of the code so we should check it
+** https://cdn.rawgit.com/redhat-helloworld-msa/helloworld-msa/master/readme.html
+** https://github.com/burrsutter/devoxxUK17_kubernetes
+** https://github.com/johanhaleby/kubetail
+* Automating resilience testing with Docker and Property Based testing
+** Resilience Tests
+*** Ability to recover from or adjust to misfortune or change
+*** Applications need to adjust to bad components (e.g. Gracefully degrade a bad component)
+*** Applications need to recover, they should go back to full capacity and functionality
+*** Release It! - Test Harness was difficult
+**** It requires devops requests that are bad!
+*** Isolation - Staging has no isolation
+*** Execution - "Steps to achieve" means it's manual... it sucks
+*** Rollback in wiki pages... see the point above
+*** Coverage - Only a small amount of systems are truly changed for this tests
+*** Cost - Everyone needs to be present to check what should be tested
+*** Frequency - Once... too costly
+*** We need automated tests that are completely isolated with full covarage withouth human interaction and frequent!
+** Tools
+*** Docker-compose
+**** Start the full environment
+*** IG Havoc
+**** Emulates failures with Docker power
+**** https://github.com/IG-Group/Havoc
+*** Fake server records the messages and it's used to emulate failure from outside sources
+** Docker-compose needs priveleged mode as true to inject failures
+** Clojure can be used to control the tests programmatically :tada:
+** Property Based Testing
+*** Example Based Testing it's biased
+*** Property Based Testing you give what type of inout the function expects and give a property to be tested a N amount of times
+*** It also uses seeds
+*** How to specify properties?
+**** On an event driven where we want a message that is delivered only once and doesn't override old information
+***** The tool actually creates an input plan based on several properties
+***** We need to specify the healthy states
+***** To run the test you give the plan with this generation with all the things that break and how to be healthy
+***** We can set our expectations based on the received messages (e.g. received 20000 and received unique 2000)
+***** Dangling state is tricky to test
+***** Startup dependency it's also tricky
+***** Healthy states are crucial! You might find that you don't have a lot of healthy states...
+****** This can be used as a metric! :thinking:
+** Drawbacks
+*** They take a LOT of time...
+*** Shriking is useless
+*** Non-deterministic
+*** Infnite number of tests...
+*** No proof
+** Simple testing can prevent most critical failures - Ding Yuan
+** Docker is your friend!
+** Don't write tests
+*** Let the machine do testing for you!
+** Chaos Monkey is a good tool in AWS but needs isolation
+** They don't do it in CI cycle but they don't have everything in Docker
+* Agile is NOT a process!
+** Agile is slapped everywhere!
+** The Agile Boundary
+*** What - oppurtinity / feature request
+*** How - developer side, shouldn't be interefered by product (within reason)
+*** Communication - the barrier!
+** Shared Vision is the goal
+** Spring practices usually aren't understood
+** Agile requires change, change isn't easy
+*** Problems along the path make it really difficult to change!
+** Internal projects are as important as external stakeholders! Usually this isn't recognized but brings a lot of issues long term
+** Mix Cadences in every team which makes it really difficult to make predictions
+** Manegerless Environment from Valve works for them but lack of structure makes the presenter feel doubt that a diverse team is possible
+** Anarchy != Agile, roles exist even within Agile, removing them prooved costly. Agile just tries to have some lightweight practices that avoid messing with engineering
+** Breaking Down Agile
+** Ward Cunningham coined the term Technical Debt and there's a good youtube video regarding this (need to search for it)
+** But to sum it up... people don't fully understand the Agile Manifesto and there are a lot of misconceptions
+** https://geert-hofstede.com/organisational-culture.html
+** Agile is a culture, not a methodology or process
+** Agile is suggested rathar than living culture. It's a template
+* I have a NoSQL toaster
+** IBM SABRE, first use of a database
+** NoSQL isn't a very useful term
+*** Marketing Shorthand
+*** Easy?
+**** No, you still need to think about it!
+*** Scalability?
+**** Again, no... The datamodel needs to be tought about (e.g. Sharding Keys)
+*** ACID vs BASE?
+**** Basic Availability Soft-state Eventual Consistency
+**** Atomic COnsistent Isolated Durable
+**** No need to trade off...
+*** Schemaless
+**** Also no, Cassandra needs a schema for example
+*** Denormalized
+**** This is the most common charateristic
+** Why NoSQL
+*** Don't choose NoSQL when you're starting a project! Scale and Ingest without knowing format are the best use cases but you shouldn't be pressured to use it "just because"
+*** Maybe SQL is fine but scaling it's harder (scale vertically usually) and sharding relational databases it's really difficult
+*** CAP
+**** Consistency
+**** Availability
+****  Partition
+**** You need to choose what to sacrifice!
+*** Schemas can be hard!
+*** Round Pegs, Square Holes aka the right tool for the right job
+** Document
+*** JSON document
+*** Hierarchical data
+*** Understands the format of the document
+*** It can do server side things (e.g. Indexing )
+*** Operations
+**** Upserter aka set
+**** Insert aka adds
+**** Update aka replace
+**** Delete
+**** Get
+*** N1QL in Couchdb gives a SQL like query language
+*** Key usecases
+**** User profiiles
+**** Session stores
+**** Content management
+**** General relational replacement but don't try transactional!
+** Key/Value
+*** Value is anything! DB Doesn't understand the format of the document
+*** Two classes
+**** In Memory
+**** Distributed datastores
+*** Doesn't care about your data
+*** Eventual Consistency
+**** During failure accepts but needs to be fixed later
+**** The developer needs to solve it
+**** AP systems are more complicated because of this
+*** Use cases
+**** Data variability
+**** Object Caching
+**** Session storate
+**** Large object storage
+**** Low latency access (no need for secondary index)
+** Columnar
+*** Similar to key value
+*** Missing fields / columns is possible
+*** Similar to relational but the internals are truly different
+*** Not schemaless!
+*** Types are enforced
+**** Modifying the schema it's really complicated
+*** Scalability wins here
+*** Impedance Mismatch (post processing might be needed)
+*** Scales Well
+*** Suited for Anayltics
+*** Use Cases
+**** Metering Data
+**** Really big data
+**** Analytics
+** Graph
+*** Euler came up with graph theory
+**** 7 Bridges of Konigsberg
+*** Use cases
+**** Social networks
+**** Fraud detections
+**** Parcel routing
+**** Shopping recommendations
+** Convergence!
+*** You can emulate different types of DB's with other types of DB's (e.g. relational saving documents)
+*** Are you trying to shoehorn technology to your use cases?
+** What to take away?
+*** You need to choose wisely young padawan
+**** Don't group the different types of databases
+*** Current status
+**** Polyglot approach where several services are used
+**** Streaming topologies help separate this services
+**** One service per system (e.g. service connects to SQL only, other would connect to Columnar)
+* JVM Toolbox 2017 - Choose the right JVM language for the right task (Live coding)
+** Numeric operations
+*** Groovy converts types in Runtime
+*** Scala loses precision even with BigDecimal
+*** JS loses all number precision
+*** Scala is bad with different types ( number * 'a' breaks!)
+*** Javascript it's really slow
+** JSON parsing
+*** Java has no JSON in standart lib
+*** Groovy and Scala has a JSON parser in standart lib
+*** Scala has a big overhead in types
+*** Scala has really bad performance
+*** Java and Groovy are the fastest
+*** JS third place
+** Text Template Processing
+*** Java has some problems since it uses String.format
+*** JS, Groovy and Scala has string interpolation which helps a lot in this use case!
+*** Java has the worst perfomance
+*** Scala and Groovy are fast, Groovy is the fastest
+*** JS is not present
+** Gradle combines everything so the right tool is used for the right job
+* Busy Developer's Guide to Building Languages
+** Where the real geeks come out (the alternative title)
+** A lot of geekery was talked about
+** Main objective of the talk
+*** Tools can and sometimes should be seen as languages
+*** Interpreters and Transpilers are easier to start with
+*** Think how life can be improved by creating "helpers" that can be extended easily
+*** Analysis phase it's really complicated but it can be skipped or simplified
+*** Use ANTLR to start, makes everything easier
+** Be curious, think about issues and you'll see that sometimes the ROI will compensate building a language for your goal
+* Rethinking Microservices with Stateful Streams
+** What are microservices about?
+*** Autonomy! Let them life their own life
+**** Independent Deploymen
+**** Independence is where we gain value and allows us to scale
+** Scale on people / workers
+*** People can be seen as applications / services
+*** Strapped together with FTP file transfer, Email, etc...
+** Services make us think about the internal world but also the external world
+** Independence has a cost
+*** Encapsulation => Loose Coupling means less surface area to couple services
+*** With microservices you need to syncronize changes
+**** To help, you need to find a bounded context! (e.g. SSO)
+** Business services are different
+*** They share more core elements and logic
+*** We need to encapsulate but we also need freedom to work on various datasets and alter them
+** Data systems have little to do with encapsulation!
+*** In services, interfaces hide data
+*** In databases, interfaces augment data
+*** Data expose, Services hide it
+** Microservices should not share database
+*** They are rich type of coupling
+*** We wrap in services to hide that amplifying interface of databases but...
+**** 1 - We need to constantly add to the interface... Slowly we get more exposure in services which goes against their principle (Data-Service problem)
+**** 2 - Business Services just give up on waiting for complex queries, making them do inside work by getting all data! This brings a lot of potential data divergions (Data Erotion)
+*** You get in a Inadequacy Cycle
+*** CAP theorem reflects this
+** Request Driven / Event Driven / Query (CQRS)
+*** Command impies state change
+*** Event also implies state change outside of the application context
+*** Query no state changes are expected!
+*** Events delegates work and that shifts the control
+*** Request Driven creates high coupling level
+*** Event Driven you just don't talk do different services, no direct invocation
+*** Event Broadcast leads to low coupling augmenting the independency of our services so state is broadcasted to all and let each service do what they need
+** With Kafka you are able to...
+*** Streaming Platform
+*** Scalable, fault tolerant, concurrent, strongly ordered, retentive
+*** A place to keep the data-on-the-outside
+**** Leave data in Kafka long term
+**** Services only need to cache
+*** Stream Processing
+**** Event Service
+***** Merges streams and enriches the streaming service with the merger of data
+**** Query Service
+***** Derived tables can be created and be used by frontier services
+**** Data Storage (Kafka) + Query Language (Query Service) == Database?
+**** A Database Inside Out (check video in presentation notes)
+** Microservices shouldn't share databases... but this isn't a normal database
+*** It decentralizes responsibility of query processing
+*** Centralizing immutable data
+*** "To Share a Database, turn it inside out"
+** The evolution of a system should be the real measure of a system!
+** WIRED principals
+* Fostering an evolving architecture in the agile world
+** Old system - IVS
+*** Started with Console Application and the hardware wasn't being manufactured
+** First iteration attempt
+*** 15 archictets, 1 developer...
+*** 100+ of blueprints
+*** Put on hold
+** Second iteration attempt
+*** Developers brought in and SCRUM applied
+*** 12 sprints until code was in Production
+*** Legacy system was turned off after 70 sprints and it was boring
+** ... this iteration was successful
+** Spring 130 - We need microservices!
+*** 5x 5 people
+*** 100% cross functional
+*** So lessons learned
+**** Teching is learning something the second time over
+**** Always experiment - Celebrate success but also failure!
+**** Bureaucracy: Spiral of bureaucracy
+** Agile vs agile
+*** Scrum is a set of best practices
+*** Don't follow the rules, apply where needed
+*** Ask yourself:  Why are you doing x?
+*** In this example, they stopped doing standups because it didn't apply to them
+** Technical Debt
+*** Velocity goes down
+*** Take shortcuts
+*** Focus on functionality instead of quality and architecture
+*** Velocity decreases even more
+*** ... etc
+*** They needed to stop all feature development to fix bugs
+** Software architectureis about making fundamental structural choices which are costly to change
+*** Better! Always try to design for change
+*** Just in time architecture, find the last responsilble moment
+*** Decisions up front are often made iwth limited knowledge
+*** KISS! Do the simples worker
+*** Every line of code is part of the architecture
+*** Architecture is about code, not documents
+** Architects
+*** Fire all architect, it's a job for everyone
+*** Architecturetrube to brainstorm and create a vision, each team has one person represeting
+*** Convince PO to prioritize debt and tech stories
+*** Code camp to spread vision (cross-polonization)
+*** Self organizing teams
+**** If you want something, make it happen you have the freedom
+**** But there's a drawback... Shared responsibility often means no responsibility (boring stuff is ignored)
+** So back to micrservices
+*** Reason
+**** Deployment took way to long
+**** Stuck with old technology (Swing, EJB, etc)
+**** No longer sexy which is a problem
+*** Three-tier => Hexagonal => Microservices
+*** Teams are picking their own technology
+**** Good! they have freedom creativity and state of art technology
+**** But...
+***** Microservices deteriorate much faster!
+***** Code is being duplicated
+***** Monitoring is harder
+***** Code styles divert
+*** When breaking up the monolith
+**** Start easy
+**** Work your way down
+**** Better: Create a separate API for the leftovers
+*** "Organisations which radically change their system design should expect changes in communication structure"
+**** Reduces cross polonization
+*** Cargo Cult
+**** Spotify does X
+**** Spotify is Success!
+**** We don't do X
+**** If we do X we'll be successful! ... nope
+*** Survivorship bias
+**** Nobody talks about failed projects with microservices
+**** There are more successful projects not doing microservices
+** Present day
+*** Sprint 168
+*** 10+ years
+*** Big scary things left unfinished
+*** Nobody feels responsible for those big scary things
+*** We are lacking vision, about the architecture and the product
+* The Art of Discovering Bounded Contexts
+** Is bounded context a buzzword to feel clever?
+** Not everything is a bounded context
+** So how do you find bounded context?
+*** Understand the business problem!
+**** Business Model Canvas
+**** User research and testing
+**** If you don't understand your users, you don't undestand your application
+*** Start by exploring core use cases and processes
+**** Explore the several steps of a use case
+**** Simplify the words
+**** Only after being aware of all the steps can you define the bounded context
+**** Grab your steps, formulate an hypothesis of what could be context
+**** Clues for discovering Contexts:
+***** Linguistic Boundaries
+***** Data: flow, ownership, uniqueness
+***** Domain expert boundaries
+***** Existing organisational boundaries - could be wrong!
+***** Business Process Steps - some times it's easy and each step is a bounded context but usually you find errors during implementation
+** All models are wrong, some are useful
+** How to justify bounded contexts
+*** Customers do not care!
+*** Looking at the context map, see the teams that own each domain but teams can clash!
+*** Composite Applications
+**** Different use cases are provided by different contexts and your bounded context should contain this frontier interactions (aka care about UI!)
+**** Avoid teams blocking others! Take responsibility of all steps
+** When finding boundaries, you should only care about fast delivery
+** Theory of Constraits
+*** Find bottlenecks and use bounded context to solve them
+** DDD = Model Hypothesis
+** ToC = Model Validation
+** Evolving Bounded Contexts
+*** No silver bullets, boundaries need to adapt
+*** New business, domain, technical insights challenge existing assumptions
+*** Bottlenecks might happen in your organization if you don't evolve so be willing to change it
+*** Trade off collaboration costs [between teams] with innovation speed based on current organizational context
+*** Contexts can grow and multiply!
+*** Context Cohension
+**** Find intersecting contexts and make collaboration easier for them
+**** Don't be affraid of separating this larger contexts, only join the ones that really need
+*** So in this cross context who would develop MVP's?
+**** Both teams!
+**** Speed is of the essence and grab part of them...
+**** ... but teams become and tribe and need to collaborate more!
+**** This leads to more discovery and share knowledge
+*** How to align teams?
+**** VIDEO GAMES! - Gaming creates mega alignment
+**** Show and tell
+**** Cross-team pairing
+**** Cross-functional pairing
+**** Event storming
+** Rethinking bounded contexts
+*** Bounded context are a proxy heuristic for autonomy
+*** Autonomy Contexts
+**** Find things that change together for business reasons, owned by a single team
+** To be effective with DDD you must be good at organization architecture
+** What you need to do
+*** Experiment with models
+*** Learn Theory of Constraints
+*** Justify your choices
+*** Strive for high alignment
+** Transform your organization
+* Evolutionary Architecture
+** Change is inevitable, you need to adapt to your environment
+** What if you architect a system for change?
+** Evolutionary Architecture
+*** An evolutionary architecture supports *guided*, *increlemntal change* as a first principle along multiple dimensions
+*** Does our current system support change?
+**** Example Architectural Patterns
+***** Big Ball of Mud
+****** No change at all!
+****** A lot of coupling destroys the capacity to change
+****** No guidance inside the system
+****** Dimensions: 0
+***** Layered Architecture
+****** What if we want to change a domain layer? It might affect all layers!
+****** Technical change is possible but domain changes are painful
+****** It depends a lot on the implementation
+****** Requests need to go throught all layers to fulfill requests
+****** Dimensions: 1
+****** It's easy to break boundaries of Domain concepts
+****** Domain Dimensions: 0
+***** Microkernel
+****** Core system supports certain types of changes with plugins
+****** The Core system fits your domain, you're fine otherwise it will be difficult
+****** You're limited by your Core System and if your domain changes then this architecture will be really harmful
+****** Dimensions: 1
+***** Microservices
+****** Domain Driven Architecture
+****** They interact using explicit interfaces
+****** Shift technology stack is easier
+****** Shift domain can also be well separated
+****** Incremental changes are easier
+****** Dimensions: N
+** Principles of Evolutionary Architecture
+*** Technical
+**** Does not dictate schedule
+**** Supports fast feedback
+**** Appropriate level of coupling
+**** Iterative
+*** Domain
+**** Matches business capabilities (understand what parts of the business we will need to change)
+**** Enables Experimentation
+**** Decentralized governance
+**** Fitness function
+** Fitness Function
+*** What is important and unimportant?
+**** NFR's
+**** CFR's
+**** Quality Attributes
+*** What are the metrics and tools that could represent success?
+*** Be careful with what you prioritize, you will need to sacrifice
+*** How many generations can your application support?
+** Generations
+*** Cycle time
+**** Time taken to get a single change into production
+**** Capability to measure the changes you take to productions
+**** Repeatably
+**** Reliably
+** Choosing Styles
+*** Build and/or Buy
+**** It's not easy to make that choice
+**** Check your tradeoffs
+**** Trying to do the right thing under a lot of pressure and with low information
+**** *Functionality* and *Ability to change* should be key in this choice
+*** Measure the *Need for rapid change* vs *Value generating*
+**** Commodity - Low / Low
+**** Support - High / Low
+**** Experimental - Low / High
+**** Strategic - High / High
+** To Consider
+*** Architectural choices
+*** Decision making process + thinking
+*** Organisational and cultural elements
