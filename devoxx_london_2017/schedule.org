@@ -297,22 +297,191 @@
 *** I have a NoSQL toaster
 *** Room B
 *** Notes
-**** Insert Here
+**** IBM SABRE, first use of a database
+**** NoSQL isn't a very useful term
+***** Marketing Shorthand
+***** Easy?
+****** No, you still need to think about it!
+***** Scalability?
+****** Again, no... The datamodel needs to be tought about (e.g. Sharding Keys)
+***** ACID vs BASE?
+****** Basic Availability Soft-state Eventual Consistency
+****** Atomic COnsistent Isolated Durable
+****** No need to trade off...
+***** Schemaless
+****** Also no, Cassandra needs a schema for example
+***** Denormalized
+****** This is the most common charateristic
+**** Why NoSQL
+***** Don't choose NoSQL when you're starting a project! Scale and Ingest without knowing format are the best use cases but you shouldn't be pressured to use it "just because"
+***** Maybe SQL is fine but scaling it's harder (scale vertically usually) and sharding relational databases it's really difficult
+***** CAP
+****** Consistency
+****** Availability
+******  Partition
+****** You need to choose what to sacrifice!
+***** Schemas can be hard!
+***** Round Pegs, Square Holes aka the right tool for the right job
+**** Document
+***** JSON document
+***** Hierarchical data
+***** Understands the format of the document
+***** It can do server side things (e.g. Indexing )
+***** Operations
+****** Upserter aka set
+****** Insert aka adds
+****** Update aka replace
+****** Delete
+****** Get
+***** N1QL in Couchdb gives a SQL like query language
+***** Key usecases
+****** User profiiles
+****** Session stores
+****** Content management
+****** General relational replacement but don't try transactional!
+**** Key/Value
+***** Value is anything! DB Doesn't understand the format of the document
+***** Two classes
+****** In Memory
+****** Distributed datastores
+***** Doesn't care about your data
+***** Eventual Consistency
+****** During failure accepts but needs to be fixed later
+****** The developer needs to solve it
+****** AP systems are more complicated because of this
+***** Use cases
+****** Data variability
+****** Object Caching
+****** Session storate
+****** Large object storage
+****** Low latency access (no need for secondary index)
+**** Columnar
+***** Similar to key value
+***** Missing fields / columns is possible
+***** Similar to relational but the internals are truly different
+***** Not schemaless!
+***** Types are enforced
+****** Modifying the schema it's really complicated
+***** Scalability wins here
+***** Impedance Mismatch (post processing might be needed)
+***** Scales Well
+***** Suited for Anayltics
+***** Use Cases
+****** Metering Data
+****** Really big data
+****** Analytics
+**** Graph
+***** Euler came up with graph theory
+****** 7 Bridges of Konigsberg
+***** Use cases
+****** Social networks
+****** Fraud detections
+****** Parcel routing
+****** Shopping recommendations
+**** Convergence!
+***** You can emulate different types of DB's with other types of DB's (e.g. relational saving documents)
+***** Are you trying to shoehorn technology to your use cases?
+**** What to take away?
+***** You need to choose wisely young padawan
+****** Don't group the different types of databases
+***** Current status
+****** Polyglot approach where several services are used
+****** Streaming topologies help separate this services
+****** One service per system (e.g. service connects to SQL only, other would connect to Columnar)
 ** 10h05-10h55
 *** JVM Toolbox 2017 - Choose the right JVM language for the right task (Live coding)
-*** Gallery Hall
+*** Room A
 *** Notes
-**** Insert Here
+**** Numeric operations
+***** Groovy converts types in Runtime
+***** Scala loses precision even with BigDecimal
+***** JS loses all number precision
+***** Scala is bad with different types ( number * 'a' breaks!)
+***** Javascript it's really slow
+**** JSON parsing
+***** Java has no JSON in standart lib
+***** Groovy and Scala has a JSON parser in standart lib
+***** Scala has a big overhead in types
+***** Scala has really bad performance
+***** Java and Groovy are the fastest
+***** JS third place
+**** Text Template Processing
+***** Java has some problems since it uses String.format
+***** JS, Groovy and Scala has string interpolation which helps a lot in this use case!
+***** Java has the worst perfomance
+***** Scala and Groovy are fast, Groovy is the fastest
+***** JS is not present
+**** Gradle combines everything so the right tool is used for the right job
 ** 11h20-12h10
 *** Busy Developer's Guide to Building Languages
 *** Room A
 *** Notes
-**** Insert Here
+**** Where the real geeks come out (the alternative title)
+**** A lot of geekery was talked about
+**** Main objective of the talk
+***** Tools can and sometimes should be seen as languages
+***** Interpreters and Transpilers are easier to start with
+***** Think how life can be improved by creating "helpers" that can be extended easily
+***** Analysis phase it's really complicated but it can be skipped or simplified
+***** Use ANTLR to start, makes everything easier
+**** Be curious, think about issues and you'll see that sometimes the ROI will compensate building a language for your goal
 ** 12h25-13h15
-*** Docker Swarm or Kubernetes or Mesos - pick your framework!
-*** Gallery Hall
+*** Rethinking Microservices with Stateful Streams
+*** Room A
 *** Notes
-**** Insert Here
+**** What are microservices about?
+***** Autonomy! Let them life their own life
+****** Independent Deploymen
+****** Independence is where we gain value and allows us to scale
+**** Scale on people / workers
+***** People can be seen as applications / services
+***** Strapped together with FTP file transfer, Email, etc...
+**** Services make us think about the internal world but also the external world
+**** Independence has a cost
+***** Encapsulation => Loose Coupling means less surface area to couple services
+***** With microservices you need to syncronize changes
+****** To help, you need to find a bounded context! (e.g. SSO)
+**** Business services are different
+***** They share more core elements and logic
+***** We need to encapsulate but we also need freedom to work on various datasets and alter them
+**** Data systems have little to do with encapsulation!
+***** In services, interfaces hide data
+***** In databases, interfaces augment data
+***** Data expose, Services hide it
+**** Microservices should not share database
+***** They are rich type of coupling
+***** We wrap in services to hide that amplifying interface of databases but...
+****** 1 - We need to constantly add to the interface... Slowly we get more exposure in services which goes against their principle (Data-Service problem)
+****** 2 - Business Services just give up on waiting for complex queries, making them do inside work by getting all data! This brings a lot of potential data divergions (Data Erotion)
+***** You get in a Inadequacy Cycle
+***** CAP theorem reflects this
+**** Request Driven / Event Driven / Query (CQRS)
+***** Command impies state change
+***** Event also implies state change outside of the application context
+***** Query no state changes are expected!
+***** Events delegates work and that shifts the control
+***** Request Driven creates high coupling level
+***** Event Driven you just don't talk do different services, no direct invocation
+***** Event Broadcast leads to low coupling augmenting the independency of our services so state is broadcasted to all and let each service do what they need
+**** With Kafka you are able to...
+***** Streaming Platform
+***** Scalable, fault tolerant, concurrent, strongly ordered, retentive
+***** A place to keep the data-on-the-outside
+****** Leave data in Kafka long term
+****** Services only need to cache
+***** Stream Processing
+****** Event Service
+******* Merges streams and enriches the streaming service with the merger of data
+****** Query Service
+******* Derived tables can be created and be used by frontier services
+****** Data Storage (Kafka) + Query Language (Query Service) == Database?
+****** A Database Inside Out (check video in presentation notes)
+**** Microservices shouldn't share databases... but this isn't a normal database
+***** It decentralizes responsibility of query processing
+***** Centralizing immutable data
+***** "To Share a Database, turn it inside out"
+**** The evolution of a system should be the real measure of a system!
+**** WIRED principals
 ** 14h15-15h05
 *** Fostering an evolving architecture in the agile world
 *** Room D
