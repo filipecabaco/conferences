@@ -1,8 +1,4 @@
-* First Day
-** 09h00-10h45
 *** Keynote
-*** Galery Hall
-*** Notes
 **** 5th Devoxx and biggest; 1100+ attendees; 36 countries;
 **** 645 proposals; there was an effort to work with new speakers to better prepare them so the proposals were accepted here and other conferences.
 **** "Have nothing in your house that you do not know to be useful, or believe to be beautiful" - William Morris
@@ -51,10 +47,7 @@
 ******* Stopped played music. Software is not everything
 ****** Next steps?
 ******* Retire!
-** 10h50-11h40
 *** Reactive Spring
-*** Auditorium
-*** Notes
 **** A lot of stuff specific to one thing: Spring 5 Reactive Programming
 **** https://github.com/joshlong/flux-flix-service
 **** Microservices you'll hit non functional requirements; Data segregation when visibility is required and becomes expansive since it rellies on socket communication that is kept alive. Reactive program hels with this since and reclaims the idea of streams back to application levels (non blocking)
@@ -90,10 +83,7 @@
 ***** 'client.exchange.subscribe(lambda magic)'
 ***** You can transform the body directly into a Flux
 **** Everything needs to be reactive otherwise it doesn't make sense! If one element is blocking, then it will be bad...
-** 11h55-12h45
 *** User Stories Refactoring
-*** Room D
-*** Notes
 **** Multiple clients need compromises and requirements aren't easy because there's too many people are collecting and creating stories. The chain is too big!
 **** Context is king!
 **** Road Commitement
@@ -152,10 +142,7 @@
 ******* Understand business reasons!
 ****** Feedback loop
 ******* Measuements usually are ignored, so it should be part of the code
-** 13h45-14h35
 *** A Pragmatist’s Guide to Functional Geekery
-*** Room B
-*** Notes
 **** https://github.com/miciek/galactic-twitter
 **** Java vs Scala
 ***** Java8 still handles mutable collections, needs Guava and Lombok
@@ -179,10 +166,7 @@
 **** Pattern match can be used to run validations
 **** Manipulations can be done with high-order functions and types that represent said manipulations and those can be applied
 **** Type class pattern can be used to associate a return type with a internal type during compilation time (e.g. Class to JSON response) decoupling
-** 14h50-15h40
 *** Cloud Native with Kubernetes
-*** Room D
-*** Notes
 **** developers.redhat.com
 **** Jess Humble test - Book of CD
 **** Typical software development has a lot of people pushing some BLOB up and down with slow development with low alignment
@@ -217,10 +201,7 @@
 **** https://cdn.rawgit.com/redhat-helloworld-msa/helloworld-msa/master/readme.html
 **** https://github.com/burrsutter/devoxxUK17_kubernetes
 **** https://github.com/johanhaleby/kubetail
-** 16h10-17h00
 *** Automating resilience testing with Docker and Property Based testing
-*** Room C
-*** Notes
 **** Resilience Tests
 ***** Ability to recover from or adjust to misfortune or change
 ***** Applications need to adjust to bad components (e.g. Gracefully degrade a bad component)
@@ -269,10 +250,7 @@
 ***** Let the machine do testing for you!
 **** Chaos Monkey is a good tool in AWS but needs isolation
 **** They don't do it in CI cycle but they don't have everything in Docker
-** 17h15-18h05
 *** Agile is NOT a process!
-*** Room C
-*** Notes
 **** Agile is slapped everywhere!
 **** The Agile Boundary
 ***** What - oppurtinity / feature request
@@ -292,11 +270,7 @@
 **** https://geert-hofstede.com/organisational-culture.html
 **** Agile is a culture, not a methodology or process
 **** Agile is suggested rathar than living culture. It's a template
-* Second Day
-** 09h00-09h50
 *** I have a NoSQL toaster
-*** Room B
-*** Notes
 **** IBM SABRE, first use of a database
 **** NoSQL isn't a very useful term
 ***** Marketing Shorthand
@@ -388,10 +362,7 @@
 ****** Polyglot approach where several services are used
 ****** Streaming topologies help separate this services
 ****** One service per system (e.g. service connects to SQL only, other would connect to Columnar)
-** 10h05-10h55
 *** JVM Toolbox 2017 - Choose the right JVM language for the right task (Live coding)
-*** Room A
-*** Notes
 **** Numeric operations
 ***** Groovy converts types in Runtime
 ***** Scala loses precision even with BigDecimal
@@ -412,10 +383,7 @@
 ***** Scala and Groovy are fast, Groovy is the fastest
 ***** JS is not present
 **** Gradle combines everything so the right tool is used for the right job
-** 11h20-12h10
 *** Busy Developer's Guide to Building Languages
-*** Room A
-*** Notes
 **** Where the real geeks come out (the alternative title)
 **** A lot of geekery was talked about
 **** Main objective of the talk
@@ -425,10 +393,7 @@
 ***** Analysis phase it's really complicated but it can be skipped or simplified
 ***** Use ANTLR to start, makes everything easier
 **** Be curious, think about issues and you'll see that sometimes the ROI will compensate building a language for your goal
-** 12h25-13h15
 *** Rethinking Microservices with Stateful Streams
-*** Room A
-*** Notes
 **** What are microservices about?
 ***** Autonomy! Let them life their own life
 ****** Independent Deploymen
@@ -482,18 +447,216 @@
 ***** "To Share a Database, turn it inside out"
 **** The evolution of a system should be the real measure of a system!
 **** WIRED principals
-** 14h15-15h05
 *** Fostering an evolving architecture in the agile world
-*** Room D
-*** Notes
-**** Insert Here
-** 15h20-16h10
+**** Old system - IVS
+***** Started with Console Application and the hardware wasn't being manufactured
+**** First iteration attempt
+***** 15 archictets, 1 developer...
+***** 100+ of blueprints
+***** Put on hold
+**** Second iteration attempt
+***** Developers brought in and SCRUM applied
+***** 12 sprints until code was in Production
+***** Legacy system was turned off after 70 sprints and it was boring
+**** ... this iteration was successful
+**** Spring 130 - We need microservices!
+***** 5x 5 people
+***** 100% cross functional
+***** So lessons learned
+****** Teching is learning something the second time over
+****** Always experiment - Celebrate success but also failure!
+****** Bureaucracy: Spiral of bureaucracy
+**** Agile vs agile
+***** Scrum is a set of best practices
+***** Don't follow the rules, apply where needed
+***** Ask yourself:  Why are you doing x?
+***** In this example, they stopped doing standups because it didn't apply to them
+**** Technical Debt
+***** Velocity goes down
+***** Take shortcuts
+***** Focus on functionality instead of quality and architecture
+***** Velocity decreases even more
+***** ... etc
+***** They needed to stop all feature development to fix bugs
+**** Software architectureis about making fundamental structural choices which are costly to change
+***** Better! Always try to design for change
+***** Just in time architecture, find the last responsilble moment
+***** Decisions up front are often made iwth limited knowledge
+***** KISS! Do the simples worker
+***** Every line of code is part of the architecture
+***** Architecture is about code, not documents
+**** Architects
+***** Fire all architect, it's a job for everyone
+***** Architecturetrube to brainstorm and create a vision, each team has one person represeting
+***** Convince PO to prioritize debt and tech stories
+***** Code camp to spread vision (cross-polonization)
+***** Self organizing teams
+****** If you want something, make it happen you have the freedom
+****** But there's a drawback... Shared responsibility often means no responsibility (boring stuff is ignored)
+**** So back to micrservices
+***** Reason
+****** Deployment took way to long
+****** Stuck with old technology (Swing, EJB, etc)
+****** No longer sexy which is a problem
+***** Three-tier => Hexagonal => Microservices
+***** Teams are picking their own technology
+****** Good! they have freedom creativity and state of art technology
+****** But...
+******* Microservices deteriorate much faster!
+******* Code is being duplicated
+******* Monitoring is harder
+******* Code styles divert
+***** When breaking up the monolith
+****** Start easy
+****** Work your way down
+****** Better: Create a separate API for the leftovers
+***** "Organisations which radically change their system design should expect changes in communication structure"
+****** Reduces cross polonization
+***** Cargo Cult
+****** Spotify does X
+****** Spotify is Success!
+****** We don't do X
+****** If we do X we'll be successful! ... nope
+***** Survivorship bias
+****** Nobody talks about failed projects with microservices
+****** There are more successful projects not doing microservices
+**** Present day
+***** Sprint 168
+***** 10+ years
+***** Big scary things left unfinished
+***** Nobody feels responsible for those big scary things
+***** We are lacking vision, about the architecture and the product
 *** The Art of Discovering Bounded Contexts
-*** Room A
-*** Notes
-**** Insert Here
-** 16h40-17h30
+**** Is bounded context a buzzword to feel clever?
+**** Not everything is a bounded context
+**** So how do you find bounded context?
+***** Understand the business problem!
+****** Business Model Canvas
+****** User research and testing
+****** If you don't understand your users, you don't undestand your application
+***** Start by exploring core use cases and processes
+****** Explore the several steps of a use case
+****** Simplify the words
+****** Only after being aware of all the steps can you define the bounded context
+****** Grab your steps, formulate an hypothesis of what could be context
+****** Clues for discovering Contexts:
+******* Linguistic Boundaries
+******* Data: flow, ownership, uniqueness
+******* Domain expert boundaries
+******* Existing organisational boundaries - could be wrong!
+******* Business Process Steps - some times it's easy and each step is a bounded context but usually you find errors during implementation
+**** All models are wrong, some are useful
+**** How to justify bounded contexts
+***** Customers do not care!
+***** Looking at the context map, see the teams that own each domain but teams can clash!
+***** Composite Applications
+****** Different use cases are provided by different contexts and your bounded context should contain this frontier interactions (aka care about UI!)
+****** Avoid teams blocking others! Take responsibility of all steps
+**** When finding boundaries, you should only care about fast delivery
+**** Theory of Constraits
+***** Find bottlenecks and use bounded context to solve them
+**** DDD = Model Hypothesis
+**** ToC = Model Validation
+**** Evolving Bounded Contexts
+***** No silver bullets, boundaries need to adapt
+***** New business, domain, technical insights challenge existing assumptions
+***** Bottlenecks might happen in your organization if you don't evolve so be willing to change it
+***** Trade off collaboration costs [between teams] with innovation speed based on current organizational context
+***** Contexts can grow and multiply!
+***** Context Cohension
+****** Find intersecting contexts and make collaboration easier for them
+****** Don't be affraid of separating this larger contexts, only join the ones that really need
+***** So in this cross context who would develop MVP's?
+****** Both teams!
+****** Speed is of the essence and grab part of them...
+****** ... but teams become and tribe and need to collaborate more!
+****** This leads to more discovery and share knowledge
+***** How to align teams?
+****** VIDEO GAMES! - Gaming creates mega alignment
+****** Show and tell
+****** Cross-team pairing
+****** Cross-functional pairing
+****** Event storming
+**** Rethinking bounded contexts
+***** Bounded context are a proxy heuristic for autonomy
+***** Autonomy Contexts
+****** Find things that change together for business reasons, owned by a single team
+**** To be effective with DDD you must be good at organization architecture
+**** What you need to do
+***** Experiment with models
+***** Learn Theory of Constraints
+***** Justify your choices
+***** Strive for high alignment
+**** Transform your organization
 *** Evolutionary Architecture
-*** Auditorium
-*** Notes
-**** Insert Here
+**** Change is inevitable, you need to adapt to your environment
+**** What if you architect a system for change?
+**** Evolutionary Architecture
+***** An evolutionary architecture supports *guided*, *increlemntal change* as a first principle along multiple dimensions
+***** Does our current system support change?
+****** Example Architectural Patterns
+******* Big Ball of Mud
+******** No change at all!
+******** A lot of coupling destroys the capacity to change
+******** No guidance inside the system
+******** Dimensions: 0
+******* Layered Architecture
+******** What if we want to change a domain layer? It might affect all layers!
+******** Technical change is possible but domain changes are painful
+******** It depends a lot on the implementation
+******** Requests need to go throught all layers to fulfill requests
+******** Dimensions: 1
+******** It's easy to break boundaries of Domain concepts
+******** Domain Dimensions: 0
+******* Microkernel
+******** Core system supports certain types of changes with plugins
+******** The Core system fits your domain, you're fine otherwise it will be difficult
+******** You're limited by your Core System and if your domain changes then this architecture will be really harmful
+******** Dimensions: 1
+******* Microservices
+******** Domain Driven Architecture
+******** They interact using explicit interfaces
+******** Shift technology stack is easier
+******** Shift domain can also be well separated
+******** Incremental changes are easier
+******** Dimensions: N
+**** Principles of Evolutionary Architecture
+***** Technical
+****** Does not dictate schedule
+****** Supports fast feedback
+****** Appropriate level of coupling
+****** Iterative
+***** Domain
+****** Matches business capabilities (understand what parts of the business we will need to change)
+****** Enables Experimentation
+****** Decentralized governance
+****** Fitness function
+**** Fitness Function
+***** What is important and unimportant?
+****** NFR's
+****** CFR's
+****** Quality Attributes
+***** What are the metrics and tools that could represent success?
+***** Be careful with what you prioritize, you will need to sacrifice
+***** How many generations can your application support?
+**** Generations
+***** Cycle time
+****** Time taken to get a single change into production
+****** Capability to measure the changes you take to productions
+****** Repeatably
+****** Reliably
+**** Choosing Styles
+***** Build and/or Buy
+****** It's not easy to make that choice
+****** Check your tradeoffs
+****** Trying to do the right thing under a lot of pressure and with low information
+****** *Functionality* and *Ability to change* should be key in this choice
+***** Measure the *Need for rapid change* vs *Value generating*
+****** Commodity - Low / Low
+****** Support - High / Low
+****** Experimental - Low / High
+****** Strategic - High / High
+**** To Consider
+***** Architectural choices
+***** Decision making process + thinking
+***** Organisational and cultural elements
